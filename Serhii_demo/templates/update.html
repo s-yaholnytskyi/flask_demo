@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="jumbotron text-center">
+    <h1 >Update file {{ filename }}</h1>
+    <p class="lead">You are going to update file '{{ filename }}'. Old data will be deleted.</p>
+</div>
+<form action='http://127.0.0.1:5000/updateFile/{{ filename }}' method='post' id='bootstrap-override' enctype='multipart/form-data' style='width: 500px; display: inline-block;'>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1" style='width: 500px;'>Enter JSON data to write to {{ filename }}</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name='text'>{{ data }}</textarea>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/" class="btn btn-success">To Start Page</a>
+</form>
+{% endblock %}

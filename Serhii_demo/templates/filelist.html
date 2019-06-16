@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="jumbotron text-center">
+    {% if current_user.is_authenticated %}
+    <img class='rounded-circle' width="100" height="100" src='{{ image_file }}'>
+    <h1>{{ current_user.username }}'s files</h1>
+    {% else %}
+    <h1 >Stored Files</h1>
+    {% endif %}
+    <p class="lead">Here you can view, download and update files.</p>
+    {% if files|length == 0 %}
+    <p class='lead'>There is no file in storage yet...</p>
+    {% endif %}
+</div>
+<ul class="list-group"  style='width: 500px; display: inline-block;'>
+    {% for file in files %}
+    <li class="list-group-item">
+        <a href='http://127.0.0.1:5000/delete/{{ file }}'><ion-icon style='font-size: 25px; margin-top: 8px; margin-bottom: -8px; margin-right: 30px;' name="close"></ion-icon></a>
+        <a href='http://127.0.0.1:5000/downloads/{{ file }}?time={{ timestamp }}'>{{ file }}</a>
+        <a href='/update/{{ file }}' type="button" class="btn btn-outline-success" style='margin-left: 100px;'>Update file</a></li>
+    {% endfor %}
+    <a href='/' class="btn btn-success btn-md" style='display: inline-block; margin-top: 10px;'>To Start Page</a>
+</ul>
+
+{% endblock %}

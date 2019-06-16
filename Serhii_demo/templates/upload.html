@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="jumbotron text-center">
+  {% if current_user.is_authenticated %}
+  <h1 >Upload File to {{ current_user.username }}'s Storage</h1>
+  {% else %}
+  <h1 >Upload File to General Storage</h1>
+  {% endif %}
+  <p class="lead">Chose valid JSON file and click 'Submit' to upload file to storage</p>
+</div>
+<form action='http://127.0.0.1:5000/uploadFile' method='post' id='bootstrap-override' enctype='multipart/form-data' style='width: 500px; display: inline-block;'>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+    </div>
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name='inputFile'>
+      <label class="custom-file-label" for="inputGroupFile01"></label>
+    </div>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+<a href="/" class="btn btn-success">To Start Page</a>
+</form>
+{% endblock %}
