@@ -87,7 +87,11 @@ def download_file(filename):
 @app.route('/update/<path:filename>')
 def update(filename):
     try:
-        with open(app.root_path + f'\\storage\\{filename}', 'r') as src_file:
+        filepath = app.root_path + f'\\storage\\{current_user.username}\\'\
+                    if current_user.is_authenticated else\
+                    app.root_path + '\\storage\\'
+        filepath += filename
+        with open(filepath, 'r') as src_file:
             data = src_file.read()
     except Exception:
         data = ''
@@ -120,7 +124,10 @@ def updateFile(filename):
 
 @app.route('/delete/<path:filename>')
 def delete_file(filename):
-    os.remove(app.root_path + f'\\storage\\{filename}')
+    filepath = app.root_path + f'\\storage\\{current_user.username}\\'\
+        if current_user.is_authenticated else\
+        app.root_path + '\\storage\\'
+    os.remove(filepath + f'\\{filename}')
     flash('File was removed.', 'success')
     return redirect(url_for('filelist'))
 
