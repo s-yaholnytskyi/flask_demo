@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return f"User('{self.username}', '{self.image_file}')"
 
+
 try:
     db.create_all()
 except Exception:

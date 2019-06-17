@@ -139,7 +139,8 @@ def login():
             return redirect(next_page) if next_page else \
                 redirect(url_for('home'))
         else:
-            flash('Login Unsuccessfull. Please check username and password.', 'danger')
+            flash('Login Unsuccessfull. Please check username and password.',
+                  'danger')
     return render_template('login.html', form=form)
 
 
