@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block body %}
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+        <a href='/'><button class="btn btn-outline-success" type="button">To start page</button></a>
+    </form>     
+</nav>
+<div style='margin: auto; width: 70%; padding: 14%;'>
+    <p>- App is a json fileshare. You can upload json files to general storage using 'Upload File to Storage' button from home page. You can upload files which contain only valid json data and have 'json' extension.</p>
+    <p>- To look through all files from general storage, delete, update or download them you can use 'View Stored Files' button.</p>
+    <p>- Using 'Register' button you can create new unique user.</p>
+    <p>- After registration you can login, upload, view, update and delete files from your personal storage.</p>
+    <p>- After login, using 'Account' button you can update your username and account image.</p>
+</div>
+
+{% endblock %}
